@@ -8,6 +8,14 @@
 
 This repository provides **lecture notes** for **EGB121 - Engineering Mechanics**.
 
+*The contents of the lecture notes are described below.*
+
+---
+
+## Contents
+
+1. Normal Stress and Normal Strain
+
 ---
 
 ![Copyright](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)
