@@ -15,6 +15,7 @@ This repository provides **lecture notes** for **EGB121 - Engineering Mechanics*
 ## Contents
 
 1. Stress and Strain
+2. Tension and Compression Tests
 
 ---
 
