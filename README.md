@@ -14,7 +14,7 @@ This repository provides **lecture notes** for **EGB121 - Engineering Mechanics*
 
 ## Contents
 
-1. Normal Stress and Normal Strain
+1. Stress and Strain
 
 ---
 
