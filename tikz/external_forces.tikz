@@ -1,0 +1,13 @@
+\documentclass{standalone}
+
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont{TeX Gyre Pagella Math}[range={bb,bbit}, Scale=MatchUppercase]
+
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    
+\end{tikzpicture}
+\end{document}
