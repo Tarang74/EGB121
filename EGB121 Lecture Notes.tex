@@ -74,6 +74,12 @@ equations of equilibrium
     \sum \symbf{F}   & = \symbf{0}  \\
     \sum \symbf{M}_O & = \symbf{0}.
 \end{align*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 8cm, keepaspectratio = true]{figures/resultant_loadings.pdf}
+    \caption{Resultant loadings acting on a body.}
+    % \label{}
+\end{figure}
 \subsubsection{In 3D}
 In 3D, we can represent resultant loadings using four vectors acting over the sectioned area.
 \begin{description}
@@ -136,7 +142,7 @@ where in this case \(N = P\).
         \sigma \left( \Delta A \right) - \sigma' \left( \Delta A \right) & = 0       \\
         \sigma                                                           & = \sigma'
     \end{align*}
-    hence the normal stress components are must be equal in magnitude but opposite in direction.
+    hence the normal stress components must be equal in magnitude but opposite in direction.
 
     Under this condition, the material is subjected to \textbf{uniaxial stress} and this analysis
     applies to members subjected to tension or compression.
@@ -147,9 +153,9 @@ where in this case \(N = P\).
     These changes are referred to as deformation.
 \end{definition}
 \begin{definition}[Strain]
-    To describe the deformation of a body through changes in lengths of line segments on the surface, 
+    To describe the deformation of a body through changes in lengths of line segments on the surface,
     we will develop the concept of strain.
-    If an axial load \(P\) is applied to a bar, it will change the bar's length \(L_0\) to \(L\). 
+    If an axial load \(P\) is applied to a bar, it will change the bar's length \(L_0\) to \(L\).
     Then the \textbf{average normal strain} of the bar is defined
     \begin{equation*}
         \epsilon_{\mathrm{avg}} = \frac{L - L_0}{L_0}
@@ -164,16 +170,20 @@ where in this case \(N = P\).
     \end{equation*}
     In both cases normal strain is positive when the initial length elongates, and negative when the length contracts.
 
-    Strain is a dimensionless quantity sometimes expressed \unit{mm/mm^{2}} or \unit{m/m^{2}}, or as a percentage.
+    Strain is a dimensionless quantity sometimes expressed \unit{mm/mm} or \unit{m/m}, or as a percentage.
 \end{definition}
 \section{Tension and Compression Tests}
 To determine the strength of a material, we must perform a tension or commpression test.
-This test measures the stress and strain from a load \(P\), and the results can be used to 
+This test measures the stress and strain from a load \(P\), and the results can be used to
 produce a \textbf{stress-strain diagram}.
 There are two ways in which the stress-strain diagram is normally described.
 \subsection{Stress-Strain Diagram}
-A stress-strain diagram has the following shape
-% ! Stress Strain diagram figure
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 8cm, keepaspectratio = true]{figures/stress_strain_diagram.pdf}
+    \caption{Stress-strain diagram for a typical metal.}
+    % \label{}
+\end{figure}
 \subsubsection{Conventional Stress-Strain Diagram}
 The engineering stress assumes that the area \(A\) is constant throughout
 the gauge length
@@ -182,7 +192,7 @@ the gauge length
 \end{equation*}
 where \(A_0\) is the \textit{original} cross-sectional area of the specimen.
 
-Likewise, the engineering strain uses the specimen's original length \(L_0\) 
+Likewise, the engineering strain uses the specimen's original length \(L_0\)
 \begin{equation*}
     \epsilon = \frac{\delta}{L_0}
 \end{equation*}
@@ -190,14 +200,14 @@ Likewise, the engineering strain uses the specimen's original length \(L_0\)
 The true stress and true strain use the instantaneous area \(A\) and length \(L\)
 at each measurement.
 \subsection{Elastic Behaviour}
-The initial region of the curve is referred to as the \textbf{elastic region} 
-where the deformation is \textit{elastic}, meaning it returns to its original 
+The initial region of the curve is referred to as the \textbf{elastic region}
+where the deformation is \textit{elastic}, meaning it returns to its original
 shape when the load is removed.
 \subsubsection{Proportional Limit}
 For the majority of the elastic deformation, the curve is \textit{linear}
 until the \textbf{proportional limit} \(\sigma_{pl}\).
 \subsubsection{Modulus of Elasticity}
-As the curve is linear up to \(\sigma_{pl}\), the stress is proportional to the strain. 
+As the curve is linear up to \(\sigma_{pl}\), the stress is proportional to the strain.
 This is characterised by Hooke's law, and is expressed as
 \begin{equation*}
     \sigma = E \epsilon
@@ -207,20 +217,21 @@ or \textbf{Young's modulus}.
 \subsection{Elastic Limit}
 After reaching the proportional limit, the curve bends slightly until it reaches the \textbf{elastic limit}.
 \subsection{Plastic Behaviour}
-If the stress exceeds the elastic limit, the specimen undergoes \textit{plastic} deformation, meaning 
+If the stress exceeds the elastic limit, the specimen undergoes \textit{plastic} deformation, meaning
 any deformation is permanent.
 \subsubsection{Yielding}
-The behaviour after elastic deformation is called \textbf{yielding} 
-and this occurs at the \textbf{yield point} \(\sigma_{Y}\).
+The behaviour after elastic deformation is called \textbf{yielding}
+and this occurs at the \textbf{yield point} \(\sigma_{Y}\). Any straining
+beyond this point will plastically deform the specimen.
 \subsubsection{Yield Strength}
-Commonly \(\sigma_{pl}\), the elastic limit, and \(\sigma_Y\) occur at the same point, 
+Commonly \(\sigma_{pl}\), the elastic limit, and \(\sigma_Y\) occur at the same point,
 so a quantity called the \textbf{yield strength} \(\sigma_{YS}\) is defined.
 
-Normally, a 0.2\% strain is chosen, and from this point, a line with gradient \(E\) is drawn. 
+Normally, a 0.2\% strain is chosen, and from this point, a line with gradient \(E\) is drawn.
 The point where this line intersects the curve defines \(\sigma_{YS}\).
 \subsubsection{Ultimate Tensile Stress}
-When yielding has ended, any load causing an increase in stress will be supported by the specimen, 
-resulting in a curve that rises until it reaches a maximum stress referred to as the \textbf{ultimate stress} \(\sigma_u\)
+When yielding has ended, any load causing an increase in stress will be supported by the specimen,
+resulting in a curve that rises until it reaches a maximum stress referred to as the \textbf{ultimate stress} \(\sigma_u\).
 \subsubsection{Strain Hardening}
 This rise in the curve is called \textbf{strain hardening}.
 \subsubsection{Necking}
@@ -234,10 +245,11 @@ Finally, the specimen breaks at the \textbf{fracture stress} \(\sigma_f\) at the
     Ductility is a measure of the amount of plastic deformation a material can sustain under tensile stress before failure.
 
     Ductility can be measured using its \textbf{percent elongation} (in length) or \textbf{percent reduction} (in area).
+
 \end{definition}
 \subsection{Brittleness}
 \begin{definition}[Brittleness]
-    Brittleness
+    Brittleness describes the
 \end{definition}
 \subsection{Poisson's Ratio}
 When a deformable body is subjected to a force, it can elongate longitudinally and also contract laterally.
@@ -255,7 +267,7 @@ Consider the ratio of these two quantities \(\nu\)
 \begin{equation*}
     \nu = -\frac{\epsilon_{\mathrm{lat}}}{\epsilon_{\mathrm{long}}}.
 \end{equation*}
-Within the elastic region, this quantity will be constant, and it is referred 
+Within the elastic region, this quantity will be constant, and it is referred
 to as \textbf{Poisson's ratio}.
 
 Note the negative value is introduced as the lateral axis contracts.
