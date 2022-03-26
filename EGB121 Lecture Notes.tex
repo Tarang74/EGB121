@@ -201,55 +201,82 @@ The true stress and true strain use the instantaneous area \(A\) and length \(L\
 at each measurement.
 \subsection{Elastic Behaviour}
 The initial region of the curve is referred to as the \textbf{elastic region}
-where the deformation is \textit{elastic}, meaning it returns to its original
-shape when the load is removed.
+where the deformation is \textit{elastic}, so that unloading causes 
+the specimen to return to its original shape.
 \subsubsection{Proportional Limit}
 For the majority of the elastic deformation, the curve is \textit{linear}
-until the \textbf{proportional limit} \(\sigma_{pl}\).
+up to the point where the stress reaches the \textbf{proportional limit} 
+at \(\left( \sigma_{pl},\, \epsilon_{pl} \right)\).
 \subsubsection{Modulus of Elasticity}
-As the curve is linear up to \(\sigma_{pl}\), the stress is proportional to the strain.
-This is characterised by Hooke's law, and is expressed as
+The linear relationship up to this point is characterised by Hooke's law, and is expressed as
 \begin{equation*}
     \sigma = E \epsilon
 \end{equation*}
-where \(E\) is the constant of proportionality, also called the \textbf{modulus of elasticity}
+where \(E\) is the constant of proportionality, called the \textbf{modulus of elasticity}
 or \textbf{Young's modulus}.
 \subsection{Elastic Limit}
-After reaching the proportional limit, the curve bends slightly until it reaches the \textbf{elastic limit}.
+When the stress slightly exceeds the proportionality limit, 
+the curve bends until the stress reaches an \textbf{elastic limit}.
 \subsection{Plastic Behaviour}
-If the stress exceeds the elastic limit, the specimen undergoes \textit{plastic} deformation, meaning
-any deformation is permanent.
+An increase in stress above the elastic limit will result in a breakdown of the material 
+and cause it to deform plastically.
 \subsubsection{Yielding}
-The behaviour after elastic deformation is called \textbf{yielding}
-and this occurs at the \textbf{yield point} \(\sigma_{Y}\). Any straining
-beyond this point will plastically deform the specimen.
-\subsubsection{Yield Strength}
-Commonly \(\sigma_{pl}\), the elastic limit, and \(\sigma_Y\) occur at the same point,
-so a quantity called the \textbf{yield strength} \(\sigma_{YS}\) is defined.
+This behaviour is called \textbf{yielding}
+and the stress that causes yielding occurs at the \textbf{yield point} 
+\(\left( \sigma_{Y},\; \epsilon_{Y} \right)\). 
+Although not shown in the diagram, the yield point is distinguished as two points.
 
-Normally, a 0.2\% strain is chosen, and from this point, a line with gradient \(E\) is drawn.
-The point where this line intersects the curve defines \(\sigma_{YS}\).
-\subsubsection{Ultimate Tensile Stress}
-When yielding has ended, any load causing an increase in stress will be supported by the specimen,
-resulting in a curve that rises until it reaches a maximum stress referred to as the \textbf{ultimate stress} \(\sigma_u\).
+The \textbf{upper yield point} occurs first, followed by a sudden decrease in load-carrying capacity
+to a \textbf{lower yield point}. Once the yield point is reached, \textit{the specimen will continue to 
+elongate \textbf{without} any increase in load}. When the material behaves in this manner,
+it is often referred to as being \textbf{perfectly plastic}.
+\subsubsection{Yield Strength}
+Commonly the proportionality limit, the elastic limit, and yield point are indistinguishable,
+due to this, the \textbf{yield strength} is defined at \(\left( \sigma_{YS},\; \epsilon_{YS} \right)\).
+
+To determine this point, a 0.2\% strain is chosen, and a line with gradient \(E\) is drawn
+from the \(\epsilon\) axis.
+The point where this line intersects the curve defines \(\left( \sigma_{YS},\; \epsilon_{YS} \right)\).
 \subsubsection{Strain Hardening}
-This rise in the curve is called \textbf{strain hardening}.
+Yielding ends when any loading causes the stress
+to increase, this rise in the curve is referred to as \textbf{strain hardening}.
+
+When a plastically deformed ductile material is unloaded, 
+the elastic strain is recovered as the material returns to its equilibrium state. 
+
+However the plastic strain is maintained, resulting in a \textbf{permanent set}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 8cm, keepaspectratio = true]{figures/strain_hardening.pdf}
+    \includegraphics[height = 8cm, keepaspectratio = true]{figures/strain_hardening_recovery.pdf}
+    \caption{Elastic strain recovery under strain hardening.}
+    % \label{}
+\end{figure}
+\subsubsection{Ultimate Tensile Stress}
+The maximum stress reached on the diagram is referred to as the \textbf{ultimate tensile stress} \(\left( \sigma_{UTS},\; \epsilon_{UTS} \right)\).
 \subsubsection{Necking}
-As the specimen elongates up to \(\sigma_u\), its cross-sectional area will decrease in a \textit{uniform} manner over the gauge length.
-However after reaching \(\sigma_u\), the cross-sectional area will begin to decrease in a \textit{localised} region where
-the stress increases. As a result, a ``neck'' forms at this region, and the specimen experiences \textbf{necking}.
+While the specimen elongates up to \(\epsilon_{UTS}\), its cross-sectional area will decrease \textit{uniformally} over its gauge length.
+However after reaching \(\epsilon_{UTS}\), the cross-sectional area will decrease \textit{locally}, causing an increase in stress. 
+As a result, a ``neck'' forms at this region, and the specimen experiences \textbf{necking}.
 \subsubsection{Fracture Stress}
-Finally, the specimen breaks at the \textbf{fracture stress} \(\sigma_f\) at the end of the downward curve.
+Finally, the specimen breaks where the curve ends at the \textbf{fracture point} at \(\left( \sigma_f,\; \epsilon_f \right)\).
 \subsection{Ductility}
 \begin{definition}[Ductility]
     Ductility is a measure of the amount of plastic deformation a material can sustain under tensile stress before failure.
 
-    Ductility can be measured using its \textbf{percent elongation} (in length) or \textbf{percent reduction} (in area).
-
+    Ductility can be measured using the \textbf{percent elongation} (in length) or \textbf{percent reduction} (in area)
+    of a material.
+    \begin{align*}
+        \textrm{Percent Elongation} = \frac{L_f - L_0}{L_0} \qty{100}{\%} \\
+        \textrm{Percent Reduction} = \frac{A_0 - A_f}{A_0} \qty{100}{\%}
+    \end{align*}
+    As the elastic region is very brief in most materials, ductility is often measured using the 
+    original length and area, rather than the length and area when the material undergoes
+    plastic deformation.
 \end{definition}
 \subsection{Brittleness}
 \begin{definition}[Brittleness]
-    Brittleness describes the
+    Brittleness describes the property of a material that fractures with little to no yielding.
 \end{definition}
 \subsection{Poisson's Ratio}
 When a deformable body is subjected to a force, it can elongate longitudinally and also contract laterally.
@@ -267,8 +294,56 @@ Consider the ratio of these two quantities \(\nu\)
 \begin{equation*}
     \nu = -\frac{\epsilon_{\mathrm{lat}}}{\epsilon_{\mathrm{long}}}.
 \end{equation*}
-Within the elastic region, this quantity will be constant, and it is referred
+Within the elastic region, \(\nu\) will be constant, and it is referred
 to as \textbf{Poisson's ratio}.
 
-Note the negative value is introduced as the lateral axis contracts.
+Note the negative value is introduced as the longitudinal and lateral strains have opposite signs.
+\subsection{Strain Energy}
+As a material is deformed under external load, the load will do external work.
+This work is stored in the material as internal energy or \textbf{strain energy}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 6cm, keepaspectratio = true]{figures/strain_energy.pdf}
+    \caption{Internal energy in small element.}
+    % \label{}
+\end{figure}
+If we consider a small volume element of the material, then the force is equal to the 
+average force magnitude \(\Delta F / 2\) and the displacement is given by 
+\(d\). Therefore the strain energy \(\Delta U\) is given by
+\begin{align*}
+    \Delta U & = \frac{1}{2} \Delta F d \\
+             & = \frac{1}{2} \left( \sigma \Delta x \Delta y \right) \left( \epsilon \Delta z \right) \\
+             & = \frac{1}{2} \sigma \epsilon \Delta V
+\end{align*}
+where \(\Delta V\) is the volume of the element. If we consider the strain energy 
+\textit{per unit volume}, then
+\begin{equation*}
+    u = \frac{\Delta U}{\Delta V} = \frac{1}{2} \sigma \epsilon
+\end{equation*}
+where \(u\) is the \textbf{strain energy density}. \(u\) can also be determined 
+by finding the area under the stress-strain diagram, and hence has the units \unit{J.m^{-3}}.
+\subsubsection{Modulus of Resilience}
+When the stress in a material reaches the
+proportional limit, the strain energy density 
+is referred to as the modulus of resilience.
+\begin{equation*}
+    u_r = \frac{1}{2} \sigma_{pl} \epsilon_{pl} = \frac{1}{2} \frac{\sigma_{pl}^2}{E}
+\end{equation*}
+The modulus of resilience is also the area under the proportional region of the stress-strain 
+diagram.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 6cm, keepaspectratio = true]{figures/modulus_of_resilience.pdf}
+    \caption{Modulus of resilience \(u_r\).}
+    % \label{}
+\end{figure}
+\subsubsection{Modulus of Toughness}
+Another important property of a material is its modulus of toughness, \(u_t\). This 
+quantity represents the entire area under the stress-strain diagram.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 6cm, keepaspectratio = true]{figures/modulus_of_toughness.pdf}
+    \caption{Modulus of toughness \(u_t\).}
+    % \label{}
+\end{figure}
 \end{document}
