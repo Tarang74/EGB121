@@ -113,12 +113,11 @@ the distribution of internal loading that acts over the sectioned area.
 
     The unit for stress is Pascal where \qty{1}{Pa} or \qty{1}{N.m^{-2}} and \qty{1}{MPa} or \qty{1}{N.mm^{-2}}.
 \end{definition}
-\subsection{Average Normal Stress}
 To determine the average stress distribution acting over a cross-sectional area of an axially loaded bar,
 we assume that the material is both \textit{homogeneous} and \textit{isotropic}.
 This means the load \(P\) applied through the centroid of the cross-sectional area
 will cause the bar to deform uniformly throughout the central region of its length.
-
+\subsubsection{Average Normal Stress}
 By passing a section through a bar, equilibrium requires the resultant normal force \(N\) at the section to be
 equal to the external force \(P\). And because the material undergoes a uniform deformation, it is necessary
 that the cross section be subjected to a constant normal stress distribution.
@@ -147,6 +146,19 @@ where in this case \(N = P\).
     Under this condition, the material is subjected to \textbf{uniaxial stress} and this analysis
     applies to members subjected to tension or compression.
 \end{theorem}
+\subsubsection{Average Shear Stress}
+Shear stress is the stress component that acts in the plane of the sectioned area. 
+Here we must consider the number of planes that are in stress due to the applied force,
+so that the shear force \(V = F / n\) for \(n\) planes, is applied to hold the segment in 
+equilibrium.
+
+The average shear stress distributed over each sectioned area that develops this shear force is
+defined by
+\begin{equation*}
+    \tau_{\mathrm{avg}} = \frac{V}{A}
+\end{equation*}
+The loading case discussed is an example of \textbf{simple or direct shear} as the shear is caused
+by the direct action of the applied load \(\symbf{F}\).
 \subsection{Strain}
 \begin{definition}[Deformation]
     Whenever a force is applied to a body, it will tend to change the body's shape and size.
@@ -214,7 +226,7 @@ The linear relationship up to this point is characterised by Hooke's law, and is
 \end{equation*}
 where \(E\) is the constant of proportionality, called the \textbf{modulus of elasticity}
 or \textbf{Young's modulus}.
-\subsection{Elastic Limit}
+\subsubsection{Elastic Limit}
 When the stress slightly exceeds the proportionality limit, 
 the curve bends until the stress reaches an \textbf{elastic limit}.
 \subsection{Plastic Behaviour}
@@ -260,6 +272,22 @@ However after reaching \(\epsilon_{UTS}\), the cross-sectional area will decreas
 As a result, a ``neck'' forms at this region, and the specimen experiences \textbf{necking}.
 \subsubsection{Fracture Stress}
 Finally, the specimen breaks where the curve ends at the \textbf{fracture point} at \(\left( \sigma_f,\; \epsilon_f \right)\).
+\subsection{Allowable Stress Design}
+To ensure the safety of a structural member, it is necessary to restrict the applied load
+to one that is \textit{less than} the load a member can support.
+
+This is done by specifying a \textbf{factor of safety} \(\mathrm{F.S.}\) which 
+determines the allowable load \(F_{\mathrm{allow}}\) a member should be designed for.
+\begin{equation*}
+    \mathrm{F.S.} = \frac{F_{\mathrm{fail}}}{F_{\mathrm{allow}}}
+\end{equation*}
+Here \(F_{\mathrm{fail}}\) is found from experimental testing of the material. When the load is linearly 
+related to the stress, we can express the factor of safety using the ratio of failure stress and 
+allowable stress.
+\begin{align*}
+    \mathrm{F.S.} & = \frac{\sigma_{\mathrm{fail}}}{\sigma_{\mathrm{allow}}} \\
+    \mathrm{F.S.} & = \frac{\tau{\mathrm{fail}}}{\tau_{\mathrm{allow}}}
+\end{align*}
 \subsection{Ductility}
 \begin{definition}[Ductility]
     Ductility is a measure of the amount of plastic deformation a material can sustain under tensile stress before failure.
@@ -346,4 +374,6 @@ quantity represents the entire area under the stress-strain diagram.
     \caption{Modulus of toughness \(u_t\).}
     % \label{}
 \end{figure}
+\subsection{Average Shear Stress}
+Shear 
 \end{document}
