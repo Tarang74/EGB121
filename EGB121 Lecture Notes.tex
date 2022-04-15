@@ -3,6 +3,7 @@
 \usepackage{LaTeX-Submodule/template}
 
 % Additional packages & macros
+\usepackage{subcaption}
 
 % Header and footer
 \newcommand{\unitName}{Engineering Mechanics}
@@ -100,7 +101,7 @@ the distribution of internal loading that acts over the sectioned area.
     so does \(\Delta \symbf{F}\), while the quotient approaches a finite limit. This quotient is called the stress at
     that point.
     \begin{equation*}
-        \symbfit{\sigma} = \lim_{\Delta A \to 0} \frac{\Delta \symbf{F}}{\Delta A}
+        \symbf{\sigma} = \lim_{\Delta A \to 0} \frac{\Delta \symbf{F}}{\Delta A}
     \end{equation*}
     Here the normal and shear stresses can be expressed using \(\sigma_z\) and \(\tau_{zx}\) and \(\tau_{zy}\).
     \begin{align*}
@@ -147,9 +148,9 @@ where in this case \(N = P\).
     applies to members subjected to tension or compression.
 \end{theorem}
 \subsubsection{Average Shear Stress}
-Shear stress is the stress component that acts in the plane of the sectioned area. 
+Shear stress is the stress component that acts in the plane of the sectioned area.
 Here we must consider the number of planes that are in stress due to the applied force,
-so that the shear force \(V = F / n\) for \(n\) planes, is applied to hold the segment in 
+so that the shear force \(V = F / n\) for \(n\) planes, is applied to hold the segment in
 equilibrium.
 
 The average shear stress distributed over each sectioned area that develops this shear force is
@@ -184,6 +185,35 @@ by the direct action of the applied load \(\symbf{F}\).
 
     Strain is a dimensionless quantity sometimes expressed \unit{mm/mm} or \unit{m/m}, or as a percentage.
 \end{definition}
+\subsection{Shear Strain}
+Deformations not only cause line segments to elongate or contract, but they also cause them to change direction.
+If we consider two line segments that are originally perpendicular to one another, then the
+change in angle that occurs between them is referred to as \textbf{shear strain}.
+This angle is denoted by \(\gamma\) and is always measured in radians.
+
+The shear strain of a block can be measured using
+\begin{equation*}
+    \gamma = \frac{\pi}{2} - \theta
+\end{equation*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 6cm, keepaspectratio = true]{figures/shear_block.pdf}
+    \caption{Shear block diagram.}
+    % \label{}
+\end{figure}
+We can also define shear stress as the change in angle
+\begin{equation*}
+    \gamma = \gamma_f - \gamma_o
+\end{equation*}
+\subsection{Small Strain Analysis}
+Most engineering design involve applications for which only small deformations are allowed
+(i.e., \(\epsilon \ll 1\)).
+Hence we can make the following approximations for the small change in angle \(\Delta{\theta}\).
+\begin{align*}
+    \sin{\left( \Delta{\theta} \right)} & \approx \Delta{\theta} \\
+    \cos{\left( \Delta{\theta} \right)} & \approx 1              \\
+    \tan{\left( \Delta{\theta} \right)} & \approx \Delta{\theta}
+\end{align*}
 \section{Tension and Compression Tests}
 To determine the strength of a material, we must perform a tension or commpression test.
 This test measures the stress and strain from a load \(P\), and the results can be used to
@@ -213,11 +243,11 @@ The true stress and true strain use the instantaneous area \(A\) and length \(L\
 at each measurement.
 \subsection{Elastic Behaviour}
 The initial region of the curve is referred to as the \textbf{elastic region}
-where the deformation is \textit{elastic}, so that unloading causes 
+where the deformation is \textit{elastic}, so that unloading causes
 the specimen to return to its original shape.
 \subsubsection{Proportional Limit}
 For the majority of the elastic deformation, the curve is \textit{linear}
-up to the point where the stress reaches the \textbf{proportional limit} 
+up to the point where the stress reaches the \textbf{proportional limit}
 at \(\left( \sigma_{pl},\, \epsilon_{pl} \right)\).
 \subsubsection{Modulus of Elasticity}
 The linear relationship up to this point is characterised by Hooke's law, and is expressed as
@@ -227,20 +257,20 @@ The linear relationship up to this point is characterised by Hooke's law, and is
 where \(E\) is the constant of proportionality, called the \textbf{modulus of elasticity}
 or \textbf{Young's modulus}.
 \subsubsection{Elastic Limit}
-When the stress slightly exceeds the proportionality limit, 
+When the stress slightly exceeds the proportionality limit,
 the curve bends until the stress reaches an \textbf{elastic limit}.
 \subsection{Plastic Behaviour}
-An increase in stress above the elastic limit will result in a breakdown of the material 
+An increase in stress above the elastic limit will result in a breakdown of the material
 and cause it to deform plastically.
 \subsubsection{Yielding}
 This behaviour is called \textbf{yielding}
-and the stress that causes yielding occurs at the \textbf{yield point} 
-\(\left( \sigma_{Y},\; \epsilon_{Y} \right)\). 
+and the stress that causes yielding occurs at the \textbf{yield point}
+\(\left( \sigma_{Y},\; \epsilon_{Y} \right)\).
 Although not shown in the diagram, the yield point is distinguished as two points.
 
 The \textbf{upper yield point} occurs first, followed by a sudden decrease in load-carrying capacity
-to a \textbf{lower yield point}. Once the yield point is reached, \textit{the specimen will continue to 
-elongate \textbf{without} any increase in load}. When the material behaves in this manner,
+to a \textbf{lower yield point}. Once the yield point is reached, \textit{the specimen will continue to
+    elongate \textbf{without} any increase in load}. When the material behaves in this manner,
 it is often referred to as being \textbf{perfectly plastic}.
 \subsubsection{Yield Strength}
 Commonly the proportionality limit, the elastic limit, and yield point are indistinguishable,
@@ -253,14 +283,22 @@ The point where this line intersects the curve defines \(\left( \sigma_{YS},\; \
 Yielding ends when any loading causes the stress
 to increase, this rise in the curve is referred to as \textbf{strain hardening}.
 
-When a plastically deformed ductile material is unloaded, 
-the elastic strain is recovered as the material returns to its equilibrium state. 
+When a plastically deformed ductile material is unloaded,
+the elastic strain is recovered as the material returns to its equilibrium state.
 
-However the plastic strain is maintained, resulting in a \textbf{permanent set}. 
+However the plastic strain is maintained, resulting in a \textbf{permanent set}.
 \begin{figure}[H]
     \centering
-    \includegraphics[height = 8cm, keepaspectratio = true]{figures/strain_hardening.pdf}
-    \includegraphics[height = 8cm, keepaspectratio = true]{figures/strain_hardening_recovery.pdf}
+    \begin{subfigure}[H]{0.49\linewidth}
+        \centering
+        \includegraphics[height = 8cm, keepaspectratio = true]{figures/strain_hardening.pdf}
+        \caption{During loading.}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.49\linewidth}
+        \centering
+        \includegraphics[height = 8cm, keepaspectratio = true]{figures/strain_hardening_recovery.pdf}
+        \caption{After loading.}
+    \end{subfigure}
     \caption{Elastic strain recovery under strain hardening.}
     % \label{}
 \end{figure}
@@ -268,7 +306,7 @@ However the plastic strain is maintained, resulting in a \textbf{permanent set}.
 The maximum stress reached on the diagram is referred to as the \textbf{ultimate tensile stress} \(\left( \sigma_{UTS},\; \epsilon_{UTS} \right)\).
 \subsubsection{Necking}
 While the specimen elongates up to \(\epsilon_{UTS}\), its cross-sectional area will decrease \textit{uniformally} over its gauge length.
-However after reaching \(\epsilon_{UTS}\), the cross-sectional area will decrease \textit{locally}, causing an increase in stress. 
+However after reaching \(\epsilon_{UTS}\), the cross-sectional area will decrease \textit{locally}, causing an increase in stress.
 As a result, a ``neck'' forms at this region, and the specimen experiences \textbf{necking}.
 \subsubsection{Fracture Stress}
 Finally, the specimen breaks where the curve ends at the \textbf{fracture point} at \(\left( \sigma_f,\; \epsilon_f \right)\).
@@ -276,13 +314,13 @@ Finally, the specimen breaks where the curve ends at the \textbf{fracture point}
 To ensure the safety of a structural member, it is necessary to restrict the applied load
 to one that is \textit{less than} the load a member can support.
 
-This is done by specifying a \textbf{factor of safety} \(\mathrm{F.S.}\) which 
+This is done by specifying a \textbf{factor of safety} \(\mathrm{F.S.}\) which
 determines the allowable load \(F_{\mathrm{allow}}\) a member should be designed for.
 \begin{equation*}
     \mathrm{F.S.} = \frac{F_{\mathrm{fail}}}{F_{\mathrm{allow}}}
 \end{equation*}
-Here \(F_{\mathrm{fail}}\) is found from experimental testing of the material. When the load is linearly 
-related to the stress, we can express the factor of safety using the ratio of failure stress and 
+Here \(F_{\mathrm{fail}}\) is found from experimental testing of the material. When the load is linearly
+related to the stress, we can express the factor of safety using the ratio of failure stress and
 allowable stress.
 \begin{align*}
     \mathrm{F.S.} & = \frac{\sigma_{\mathrm{fail}}}{\sigma_{\mathrm{allow}}} \\
@@ -298,7 +336,7 @@ allowable stress.
         \textrm{Percent Elongation} = \frac{L_f - L_0}{L_0} \qty{100}{\%} \\
         \textrm{Percent Reduction} = \frac{A_0 - A_f}{A_0} \qty{100}{\%}
     \end{align*}
-    As the elastic region is very brief in most materials, ductility is often measured using the 
+    As the elastic region is very brief in most materials, ductility is often measured using the
     original length and area, rather than the length and area when the material undergoes
     plastic deformation.
 \end{definition}
@@ -328,36 +366,36 @@ to as \textbf{Poisson's ratio}.
 Note the negative value is introduced as the longitudinal and lateral strains have opposite signs.
 \subsection{Strain Energy}
 As a material is deformed under external load, the load will do external work.
-This work is stored in the material as internal energy or \textbf{strain energy}. 
+This work is stored in the material as internal energy or \textbf{strain energy}.
 \begin{figure}[H]
     \centering
     \includegraphics[height = 6cm, keepaspectratio = true]{figures/strain_energy.pdf}
     \caption{Internal energy in small element.}
     % \label{}
 \end{figure}
-If we consider a small volume element of the material, then the force is equal to the 
-average force magnitude \(\Delta F / 2\) and the displacement is given by 
+If we consider a small volume element of the material, then the force is equal to the
+average force magnitude \(\Delta F / 2\) and the displacement is given by
 \(d\). Therefore the strain energy \(\Delta U\) is given by
 \begin{align*}
-    \Delta U & = \frac{1}{2} \Delta F d \\
+    \Delta U & = \frac{1}{2} \Delta F d                                                               \\
              & = \frac{1}{2} \left( \sigma \Delta x \Delta y \right) \left( \epsilon \Delta z \right) \\
              & = \frac{1}{2} \sigma \epsilon \Delta V
 \end{align*}
-where \(\Delta V\) is the volume of the element. If we consider the strain energy 
+where \(\Delta V\) is the volume of the element. If we consider the strain energy
 \textit{per unit volume}, then
 \begin{equation*}
     u = \frac{\Delta U}{\Delta V} = \frac{1}{2} \sigma \epsilon
 \end{equation*}
-where \(u\) is the \textbf{strain energy density}. \(u\) can also be determined 
+where \(u\) is the \textbf{strain energy density}. \(u\) can also be determined
 by finding the area under the stress-strain diagram, and hence has the units \unit{J.m^{-3}}.
 \subsubsection{Modulus of Resilience}
 When the stress in a material reaches the
-proportional limit, the strain energy density 
+proportional limit, the strain energy density
 is referred to as the modulus of resilience.
 \begin{equation*}
     u_r = \frac{1}{2} \sigma_{pl} \epsilon_{pl} = \frac{1}{2} \frac{\sigma_{pl}^2}{E}
 \end{equation*}
-The modulus of resilience is also the area under the proportional region of the stress-strain 
+The modulus of resilience is also the area under the proportional region of the stress-strain
 diagram.
 \begin{figure}[H]
     \centering
@@ -366,7 +404,7 @@ diagram.
     % \label{}
 \end{figure}
 \subsubsection{Modulus of Toughness}
-Another important property of a material is its modulus of toughness, \(u_t\). This 
+Another important property of a material is its modulus of toughness, \(u_t\). This
 quantity represents the entire area under the stress-strain diagram.
 \begin{figure}[H]
     \centering
@@ -374,6 +412,151 @@ quantity represents the entire area under the stress-strain diagram.
     \caption{Modulus of toughness \(u_t\).}
     % \label{}
 \end{figure}
-\subsection{Average Shear Stress}
-Shear 
+\section{Shear Stress-Strain Diagram}
+Similar to a tensile test, we can use a thin tube and subject
+it to torsional loading. Using the data for the applied torque and resulting
+angle of twist, we can form a shear stress-strain diagram.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 8cm, keepaspectratio = true]{figures/shear_stress_strain_diagram.pdf}
+    \caption{Shear stress-strain diagram.}
+    % \label{}
+\end{figure}
+\subsection{Elastic and Plastic Regions}
+The curve will have similar properties to the stress-strain curve,
+including the elastic and plastic deformation regions.
+\subsection{Shear Modulus}
+Within the proportional region of the curve, the elastic behaviour
+is linear, so we can apply Hooke's law for shear to obtain
+\begin{equation*}
+    \tau = G \gamma
+\end{equation*}
+where \(G\) is called the \textbf{shear modulus of elasticity} or the \textbf{modulus of rigidity}.
+\subsection{Relationship between \texorpdfstring{\(E\)}{E}, \texorpdfstring{\(G\)}{G}, and \texorpdfstring{\(\nu\)}{v}}
+The three material constants, \(E\), \(G\), and \(nu\) can be related by the equation:
+\begin{equation*}
+    G = \frac{E}{2\left( 1 + \nu \right)}
+\end{equation*}
+\section{Forces}
+\subsection{Rigid Body Forces and Moments}
+\begin{definition}[Resultant force]
+    In a system of \(n\) concurrent forces, the resultant force vector \(\symbf{F}_R\) is given by
+    \begin{equation*}
+        \symbf{F}_R = \sum_{i = 1}^n \symbf{F}_i
+    \end{equation*}
+\end{definition}
+\begin{definition}[Moment]
+    When a force is applied to a body it will cause the body to
+    rotate about a point that is not on the line of action of the force.
+    This tendency is called the moment of a force.
+
+    The direction of the rotation is also known as the sense of direction of \(\symbf{M}_O\).
+
+    A moment is a vector quantity measured in Newton metres (\unit{N.m}).
+\end{definition}
+\begin{definition}[Resultant moment]
+    In a system of \(n\) concurrent forces, the resultant moment vector \(\symbf{M}_R\) about a point \(O\) is given by
+    \begin{equation*}
+        \left( \symbf{M}_R \right)_{O} = \sum_{i = 1}^n \left( \symbf{M}_O \right)_i
+    \end{equation*}
+\end{definition}
+\subsubsection{Moments --- Scalar Formulation}
+The magnitude of a moment about the point \(O\) can be determined using the formula
+\begin{equation*}
+    \norm{\symbf{M}_O} = \norm{\symbf{F}} d
+\end{equation*}
+where \(\symbf{F}\) acts perpendicular to a line with distance \(d\).
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 5cm, keepaspectratio = true]{figures/moment_scalar_perpendicular.pdf}
+    \caption{Moment scalar formulation when \(\symbf{F}\) is perpendicular.} % \label{}
+\end{figure}
+When the force is not perpendicular to the distance,
+we can use the \textbf{sliding vector} \(\symbf{r}\) along with the angle between the two vectors to determine
+the magnitude of the moment.
+\begin{equation*}
+    \norm{\symbf{M}_O} = \norm{\symbf{F}} \norm{\symbf{r}} \sin{\left( \theta \right)}
+\end{equation*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 5cm, keepaspectratio = true]{figures/moment_scalar.pdf}
+    \caption{Moment scalar resolution when \(\symbf{F}\) is not perpendicular.} % \label{}
+\end{figure}
+This results in the relationship
+\begin{equation*}
+    d = \norm{\symbf{r}} \sin{\left( \theta \right)}
+\end{equation*}
+\subsubsection{Moments --- Vector Formulation}
+Using the vector \(\symbf{r}\) with the force \(\symbf{F}\) we can define a relationship for the moment \(\symbf{M}_O\)
+\begin{equation*}
+    \symbf{M}_O = \symbf{r} \times \symbf{F}
+\end{equation*}
+where the sense of direction is determined through the right-hand rule.
+\begin{theorem}[Principle of transmissibility]
+    Any position vector \(\symbf{r}\) from the point \(O\) to any point on the line of action of the force \(\symbf{F}\)
+    will yield the same moment vector \(\symbf{M}_O\).
+    \begin{equation*}
+        \symbf{M}_O = \symbf{r}_1 \times \symbf{F} = \symbf{r}_2 \times \symbf{F} = \symbf{r}_3 \times \symbf{F}
+    \end{equation*}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height = 5cm, keepaspectratio = true]{figures/principle_of_transmissibility.pdf}
+        \caption{Principle of transmissibility.} % \label{}
+    \end{figure}
+\end{theorem}
+\begin{theorem}[Principle of moments]
+    The moment of a force \(\symbf{F}\) about a point \(O\) is equal to the sum of the
+    moments of the components of the force about the same point.
+    \begin{equation*}
+        \symbf{M}_O = \symbf{r} \times \symbf{F} = \symbf{r} \times \left( \symbf{F}_1 + \symbf{F}_2 \right) = \symbf{r} \times \symbf{F}_1 + \symbf{r} \times \symbf{F}_2
+    \end{equation*}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height = 5cm, keepaspectratio = true]{figures/principle_of_moments.pdf}
+        \caption{Principle of moments.} % \label{}
+    \end{figure}
+\end{theorem}
+\subsection{Couples}
+\begin{definition}[Couple]
+    A couple is defined as two parallel forces that have the same magnitude,
+    but opposite directions, that are separated by a perpendicular distance \(d\).
+
+    Since the resultant force is zero, the only effect of a couple is to
+    produce a rotation.
+\end{definition}
+The moment produced by a couple is called a \textit{couple moment}. We can
+determine its value by finding the sum of the moments of both couple forces
+about any arbitrary point.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.49\linewidth}
+        \centering
+        \includegraphics[height = 5cm, keepaspectratio = true]{figures/couple_2d.pdf}
+        \caption{In 2d.}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.49\linewidth}
+        \centering
+        \includegraphics[height = 5cm, keepaspectratio = true]{figures/couple.pdf}
+        \caption{In 3d.}
+    \end{subfigure}
+    \caption{Moment of a couple.} % \label{}
+\end{figure}
+The figures above illustrate how this moment can act at \textit{any point}
+since \(\symbf{M}\) depends \textit{only} on the position vector \(\symbf{r}\).
+
+The couple moment is determined using
+\begin{equation*}
+    \symbf{M} = \symbf{r}_B \times \symbf{F} + \symbf{r}_A \times \left( -\symbf{F} \right) = \left( \symbf{r}_B - \symbf{r}_A \right) \times \symbf{F}
+\end{equation*}
+However, \(\symbf{r} = \symbf{r}_B - \symbf{r}_A\), so that
+\begin{equation*}
+    \symbf{M} = \symbf{r} \times \symbf{F}
+\end{equation*}
+where \(\symbf{M}\) does not require a subscript.
+\begin{definition}[Resultant couple moment]
+    In a system of \(n\) concurrent forces, the resultant couple moment vector \(\symbf{M}_R\) is given by
+    \begin{equation*}
+        \symbf{M}_R = \sum_{i = 1}^n \symbf{M}_i
+    \end{equation*}
+\end{definition}
 \end{document}
