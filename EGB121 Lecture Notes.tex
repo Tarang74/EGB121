@@ -63,7 +63,7 @@ electrical, magnetic, or contact forces. Contact forces can be surface, linear, 
 External forces cause internal loadings that occur in equal and opposite collinear pairs as stresses and strains.
 Internal loading is associated with \textbf{stress} while \textbf{strain} is a measure of a body's deformation.
 
-These loadings have no external effects on the body, and are not included on a \textbf{Free Body Diagram} (FBD) if
+These loadings have no external effects on the body and are not included on a \textbf{Free Body Diagram} (FBD) if
 the entire body is considered.
 
 To determine the forces in each member, we can use the method of sections to represent the internal loading as external forces.
@@ -121,7 +121,7 @@ will cause the bar to deform uniformly throughout the central region of its leng
 \subsubsection{Average Normal Stress}
 By passing a section through a bar, equilibrium requires the resultant normal force \(N\) at the section to be
 equal to the external force \(P\). And because the material undergoes a uniform deformation, it is necessary
-that the cross section be subjected to a constant normal stress distribution.
+that the cross-section is subjected to a constant normal stress distribution.
 
 As a result, each small area \(\Delta A\) on the cross section is subjected
 to a force \(\Delta N = \sigma \Delta A\), where the sum of these forces over the entire cross-sectional area
@@ -181,7 +181,7 @@ by the direct action of the applied load \(\symbf{F}\).
     \begin{equation*}
         \epsilon = \lim_{\Delta s \to 0} \frac{\Delta s' - \Delta s}{\Delta s}
     \end{equation*}
-    In both cases normal strain is positive when the initial length elongates, and negative when the length contracts.
+    In both cases, normal strain is positive when the initial length elongates, and negative when the length contracts.
 
     Strain is a dimensionless quantity sometimes expressed \unit{mm/mm} or \unit{m/m}, or as a percentage.
 \end{definition}
@@ -206,7 +206,7 @@ We can also define shear stress as the change in angle
     \gamma = \gamma_f - \gamma_o
 \end{equation*}
 \subsection{Small Strain Analysis}
-Most engineering design involve applications for which only small deformations are allowed
+Most engineering designs involve applications for which only small deformations are allowed
 (i.e., \(\epsilon \ll 1\)).
 Hence we can make the following approximations for the small change in angle \(\Delta{\theta}\).
 \begin{align*}
@@ -215,7 +215,7 @@ Hence we can make the following approximations for the small change in angle \(\
     \tan{\left( \Delta{\theta} \right)} & \approx \Delta{\theta}
 \end{align*}
 \section{Tension and Compression Tests}
-To determine the strength of a material, we must perform a tension or commpression test.
+To determine the strength of a material, we must perform a tension or compression test.
 This test measures the stress and strain from a load \(P\), and the results can be used to
 produce a \textbf{stress-strain diagram}.
 There are two ways in which the stress-strain diagram is normally described.
@@ -243,14 +243,14 @@ The true stress and true strain use the instantaneous area \(A\) and length \(L\
 at each measurement.
 \subsection{Elastic Behaviour}
 The initial region of the curve is referred to as the \textbf{elastic region}
-where the deformation is \textit{elastic}, so that unloading causes
+where the deformation is \textit{elastic} so that unloading causes
 the specimen to return to its original shape.
 \subsubsection{Proportional Limit}
 For the majority of the elastic deformation, the curve is \textit{linear}
 up to the point where the stress reaches the \textbf{proportional limit}
 at \(\left( \sigma_{pl},\, \epsilon_{pl} \right)\).
 \subsubsection{Modulus of Elasticity}
-The linear relationship up to this point is characterised by Hooke's law, and is expressed as
+The linear relationship up to this point is characterised by Hooke's law and is expressed as
 \begin{equation*}
     \sigma = E \epsilon
 \end{equation*}
@@ -307,12 +307,12 @@ The maximum stress reached on the diagram is referred to as the \textbf{ultimate
 \subsubsection{Necking}
 While the specimen elongates up to \(\epsilon_{UTS}\), its cross-sectional area will decrease \textit{uniformally} over its gauge length.
 However after reaching \(\epsilon_{UTS}\), the cross-sectional area will decrease \textit{locally}, causing an increase in stress.
-As a result, a ``neck'' forms at this region, and the specimen experiences \textbf{necking}.
+As a result, a ``neck'' forms in this region, and the specimen experiences \textbf{necking}.
 \subsubsection{Fracture Stress}
 Finally, the specimen breaks where the curve ends at the \textbf{fracture point} at \(\left( \sigma_f,\; \epsilon_f \right)\).
 \subsection{Allowable Stress Design}
 To ensure the safety of a structural member, it is necessary to restrict the applied load
-to one that is \textit{less than} the load a member can support.
+to one that is \textit{less than} what a member can support.
 
 This is done by specifying a \textbf{factor of safety} \(\mathrm{F.S.}\) which
 determines the allowable load \(F_{\mathrm{allow}}\) a member should be designed for.
@@ -446,8 +446,8 @@ The three material constants, \(E\), \(G\), and \(nu\) can be related by the equ
     \end{equation*}
 \end{definition}
 \begin{definition}[Moment]
-    When a force is applied to a body it will cause the body to
-    rotate about a point that is not on the line of action of the force.
+    When a force is applied to a body it will cause the body
+    to rotate about a point that is not on the line of action of the force.
     This tendency is called the moment of a force.
 
     The direction of the rotation is also known as the sense of direction of \(\symbf{M}_O\).
