@@ -4,6 +4,7 @@
 
 % Additional packages & macros
 \usepackage{subcaption}
+\usepackage{stanli}
 
 % Header and footer
 \newcommand{\unitName}{Engineering Mechanics}
@@ -559,4 +560,114 @@ where \(\symbf{M}\) does not require a subscript.
         \symbf{M}_R = \sum_{i = 1}^n \symbf{M}_i
     \end{equation*}
 \end{definition}
+In summary, we can reduce a force and couple system to a resultant force \(\symbf{F}_R\), and resultant moment \(\left( \symbf{M}_R \right)_O\)
+about a point \(O\), so that
+\begin{align*}
+    \symbf{F}_R                  & = \sum \symbf{F}                    \\
+    \left( \symbf{M}_R \right)_O & = \sum \symbf{M}_O + \sum \symbf{M}
+\end{align*}
+\subsection{Rigid-Body Equilibrium}
+When applying the equations of equilibrium we assume that the body remains rigid and does
+not deform under the applied load.
+\subsection{Weight}
+In a gravitational field, the gravitational force acting on an object is called its weight.
+Using Newton's Law of Gravitational Attraction, with \(g = G \frac{M}{r^2}\) where \(M\) and \(r\)
+are the mass and radius of the earth, we can calculate the force of gravity on an object of mass \(m\)
+with
+\begin{equation*}
+    W = m g.
+\end{equation*}
+\subsection{Centre of Gravity}
+In a gravitational field, each particle in a body will have a weight \(\odif{W}\).
+These weights form a parallel force system, so that the resultant of the system is the total
+weight of the body, which passes through a single point called the center of gravity \(G\).
+\subsection{Friction}
+Friction is a force \(F\) that resists the movement \(P\) between two contacting surfaces that slide relative to
+one another. This force always acts tangent to the surface at the points of contact, and is directed
+so that it opposes the possible or existing motion between the surfaces.
+\subsubsection{Static Friction}
+When the frictional force \(F\) is not great enough to balance the force \(P\),
+\(F\) is called the limiting static frictional force \(F_s\) as any increase in \(P\)
+will cause the object to move. This force is directly proportional to the resultant
+normal force \(N\):
+\begin{equation*}
+    F_s = \mu_s N
+\end{equation*}
+where the constant of proportionality \(\mu_s\) is called the coefficient of static friction.
+\subsubsection{Kinetic Friction}
+If the magnitude of \(P\) is increased so that it is greater than \(F_s\), the frictional force
+at the contacting surface drops to a smaller value \(F_k\), called the kinetic frictional force.
+The object will then begin to slide with increasing speed. The kinetic friction force is calculated
+similar to the static friction force,
+\begin{equation*}
+    F_k = \mu_k N
+\end{equation*}
+where the constant of proportionality \(\mu_k\) is called the coefficient of kinetic friction.
+\section{Structural Analysis}
+\subsection{Supports}
+A support prevents the translation or rotation of a body by exerting a force or couple moment on the body.
+
+The following table summarises basic supports in 2d, along with their symbols and reactions.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c c}
+        \toprule
+        \textbf{Name} & \textbf{Symbol}                                             & \textbf{Reaction} \\
+        \midrule
+        Cable         & \begin{tikzpicture}[baseline=(current bounding box.center)]
+                            \point{a}{0}{0};
+                            \support{1}{a};
+                            \draw[thick, ->] (0, 0) -- (0.8, 0.4);
+                            \draw[dashed] (0,0) -- ++ (0.8, 0);
+                            \draw[->] (0.4, 0) arc (0:26.56505117707799:0.4);
+                            \node at (0.8, 0.2) {\(\theta\)};
+                        \end{tikzpicture}
+                      & \(\symbf{F}\) at fixed angle \(\theta\)                                         \\[0.8cm]
+        Roller        & \begin{tikzpicture}[baseline=(current bounding box.center)]
+                            \point{a}{0}{0};
+                            \support{2oo}{a};
+                        \end{tikzpicture}
+                      & \(\symbf{F}_y\)                                                                 \\[0.8cm]
+        Pin           & \begin{tikzpicture}[baseline=(current bounding box.center)]
+                            \point{a}{0}{0};
+                            \support{1}{a};
+                        \end{tikzpicture}
+                      & \(\symbf{F}\)                                                                   \\[0.8cm]
+        Fixed         & \begin{tikzpicture}[baseline=(current bounding box.center)]
+                            \point{a}{0}{0};
+                            \point{b}{1.1}{0};
+                            \support{3}{a}[-90];
+                            \beam{2}{a}{b}[0][0];
+                        \end{tikzpicture}
+                      & \(\symbf{F}\) and \(\symbf{M}\)                                                 \\
+        \bottomrule
+    \end{tabular}
+    % \caption{} % \label{}
+\end{table}
+\subsection{Free Body Diagrams}
+To construct a free body diagram, we can use the following steps:
+\begin{enumerate}
+    \item Draw outlined shape
+          \begin{enumerate}
+              \item Isolate body
+              \item Define a coordinate system
+          \end{enumerate}
+    \item Show all external forces and couple moments
+          \begin{enumerate}
+              \item Label all known forces and moments with magnitudes and directions
+              \item Label all unknown forces and moments with appropriate letters
+              \item Indicate any required dimensions on body
+          \end{enumerate}
+\end{enumerate}
+\subsection{Trusses}
+A truss is a structure composed of members joined at their end points.
+Using the dimensions and loads on a truss, we can apply analysis techniques
+to determine the forces developed in the truss members.
+\subsection{Method of Joints}
+By drawing a free body diagram at each joint,
+we can use the force equilibrium equations to obtain the forces acting on each joint.
+
+When applying the equilibrium equations, we assume that unknown forces
+are in tension. This means that positive magnitudes \linebreak correspond to members in tension,
+and negative magnitudes correspond to members in compression.
 \end{document}
