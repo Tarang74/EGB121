@@ -1,6 +1,6 @@
 %!TEX program = xelatex
 \documentclass{article}
-\usepackage{LaTeX-Submodule/template}
+\input{LaTeX-Submodule/template.tex}
 
 % Additional packages & macros
 \usepackage{subcaption}
@@ -667,7 +667,144 @@ to determine the forces developed in the truss members.
 By drawing a free body diagram at each joint,
 we can use the force equilibrium equations to obtain the forces acting on each joint.
 
-When applying the equilibrium equations, we assume that unknown forces
-are in tension. This means that positive magnitudes \linebreak correspond to members in tension,
+Generally, this requires starting at the external force and traversing each joint
+individually.
+
+When applying the equilibrium equations assume that unknown forces
+are in tension so that positive magnitudes correspond to members in tension,
 and negative magnitudes correspond to members in compression.
+\begin{theorem}[Determinate trusses]
+    Given the number of members \(m\), joints \(j\) and reactions \(r\), the following
+    relationship must hold for a statically determinate system.
+    \begin{equation*}
+        m = 2j - r
+    \end{equation*}
+\end{theorem}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width = 0.8\linewidth, keepaspectratio = true]{figures/method_of_joints_full.pdf}
+        \caption{Example truss.}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width = 0.8\linewidth, keepaspectratio = true]{figures/method_of_joints_all.pdf}
+        \caption{Internal forces with FBDs.}
+    \end{subfigure}
+
+    \vspace*{1.5em}
+    \begin{subfigure}{0.3\linewidth}
+        \centering
+        \includegraphics[height = 0.5\linewidth, keepaspectratio = true]{figures/method_of_joints_a.pdf}
+        \caption{Joint \(A\) FBD.}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \centering
+        \includegraphics[height = 0.5\linewidth, keepaspectratio = true]{figures/method_of_joints_b.pdf}
+        \caption{Joint \(B\) FBD.}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \centering
+        \includegraphics[height = 0.5\linewidth, keepaspectratio = true]{figures/method_of_joints_c.pdf}
+        \caption{Joint \(C\) FBD.}
+    \end{subfigure}
+    \caption{Method of joints example.} % \label{}
+\end{figure}
+\subsection{Method of Sections}
+To calculate the force of an arbitrary member in a truss we can utilise the method of sections.
+In this method, we can create a section that cuts through a maximum of 3 members, corresponding to
+the three equilibrium equations. Then the sectioned members can be treated as tension forces and
+their internal forces can be determined using the equilibrium equations.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[height = 4cm, keepaspectratio = true]{figures/method_of_sections_full.pdf}
+        \caption{Example truss.}
+    \end{subfigure}
+
+    \vspace*{1.5em}
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[height = 4cm, keepaspectratio = true]{figures/method_of_sections_left_section.pdf}
+        \caption{Left section.}
+    \end{subfigure}
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[height = 4cm, keepaspectratio = true]{figures/method_of_sections_right_section.pdf}
+        \caption{Right section.}
+    \end{subfigure}
+    \caption{Method of sections example.} % \label{}
+\end{figure}
+\subsection{Zero Force Members}
+A zero force member does not carry any load and thus has an internal force of 0.
+These members are used to increase the stability of structures in the event that loading changes.
+
+By identifying these members, we can reduce the number of members when applying the method of joints.
+
+Zero force members can be identified by two properties:
+\begin{enumerate}
+    \item At a \textbf{two} member joint, if both members are \textbf{not} parallel and no external loads are
+          applied at the joint, then \textbf{both} members are zero force members.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.48\linewidth}
+                  \centering
+                  \includegraphics[height = 4cm, keepaspectratio = true]{figures/zero_force_two_member.pdf}
+                  \caption{Example truss.}
+              \end{subfigure}
+              \begin{subfigure}{0.48\linewidth}
+                  \centering
+                  \includegraphics[height = 4cm, keepaspectratio = true]{figures/zero_force_two_member_simplified.pdf}
+                  \caption{Simplified truss.}
+              \end{subfigure}
+              \caption{Identifying two member joint zero force members.} % \label{}
+          \end{figure}
+    \item At a \textbf{three} member joint, if \textbf{two} members are parallel and no external loads are
+          applied at the joint, then the \textbf{third} member is a zero force member.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.48\linewidth}
+                  \centering
+                  \includegraphics[height = 4cm, keepaspectratio = true]{figures/zero_force_three_member.pdf}
+                  \caption{Example truss.}
+              \end{subfigure}
+              \begin{subfigure}{0.48\linewidth}
+                  \centering
+                  \includegraphics[height = 4cm, keepaspectratio = true]{figures/zero_force_three_member_simplified.pdf}
+                  \caption{Simplified truss.}
+              \end{subfigure}
+              \caption{Identifying three member joint zero force members.} % \label{}
+          \end{figure}
+\end{enumerate}
+\subsection{Frames and Machines}
+Frames and machines are two types of structures which are often
+composed of pin-connected multi-force members, i.e., members that are
+subjected to more than two forces. Frames are used to support loads,
+whereas machines contain moving parts and are designed to transmit and
+alter the effect of forces.
+
+Provided a frame or machine contains no more
+supports or members than are necessary to prevent its collapse, then the
+forces acting at the joints and supports can be determined by applying the
+equations of equilibrium to each of its members.
+\subsubsection{Free Body Diagrams}
+To determine the forces acting at
+the joints and supports of a frame or machine, the structure must be
+disassembled and the free-body diagrams of its parts must be drawn.
+
+The following important points must be observed:
+\begin{itemize}
+    \item Isolate each part by drawing its outlined shape and show all the
+          forces and couple moments that act on the part.
+    \item Identify all the two-force members in the structure and represent
+          their free-body diagrams as having two equal but opposite collinear
+          forces acting at their points of application (i.e., the pins). By doing
+          this, we can avoid solving an unnecessary number of equilibrium
+          equations.
+    \item Forces common to any two contacting members act with equal
+          magnitudes but opposite sense on the free-body diagrams of the
+          respective members.
+\end{itemize}
 \end{document}
