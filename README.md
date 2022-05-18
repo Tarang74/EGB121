@@ -24,6 +24,7 @@ This repository provides **lecture notes** for **EGB121 - Engineering Mechanics*
 2. Tension and Compression Tests
 3. Shear Stress-Strain Diagram
 4. Forces
+5. Structural Analysis
 
 ---
 
