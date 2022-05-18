@@ -807,4 +807,158 @@ The following important points must be observed:
           magnitudes but opposite sense on the free-body diagrams of the
           respective members.
 \end{itemize}
+\section{Centroids}
+Given the 1d region \(L:\interval{x_1}{x_2}\), 2d region \(R:\interval{x_1}{x_2}\times\interval{y_1}{y_2}\)
+and 3d region \(V:\interval{x_1}{x_2}\times\interval{y_1}{y_2}\times\interval{z_1}{z_2}\),
+the following definitions represent various geometric properties of a body.
+\subsection{Mass}
+The mass of a body with density \(\rho\) is a measure of the quantity of matter.
+
+For a length:
+\begin{equation*}
+    M = \int_L \rho \odif{L}
+\end{equation*}
+For an area:
+\begin{equation*}
+    M = \iint_A \rho \odif{A}
+\end{equation*}
+For a volume:
+\begin{equation*}
+    M = \iiint_V \rho \odif{V}
+\end{equation*}
+\subsection{Weight}
+The weight of a body is its attraction to another body (e.g., Earth),
+developed by a gravitational field with acceleration \(g\).
+
+For a length:
+\begin{equation*}
+    W = \int_L \rho g \odif{L}
+\end{equation*}
+For an area:
+\begin{equation*}
+    W = \iint_A \rho g \odif{A}
+\end{equation*}
+For a volume:
+\begin{equation*}
+    W = \iiint_V \rho g \odif{V}
+\end{equation*}
+\subsection{Centre of Mass}
+The resultant mass of the particles in a body pass through a single point called the center of mass.
+
+For a length:
+\begin{equation*}
+    \overline{x} = \frac{1}{M} \int_L \rho x \odif{L}
+\end{equation*}
+For an area:
+\begin{align*}
+    \overline{x} & = \frac{1}{M} \iint_A \rho x \odif{A} &  & \overline{y} = \frac{1}{M} \iint_A \rho y \odif{A}
+\end{align*}
+For a volume:
+\begin{align*}
+    \overline{x} & = \frac{1}{M} \iiint_V \rho x \odif{A} &  & \overline{y} = \frac{1}{M} \iiint_V \rho y \odif{V} &  & \overline{z} = \frac{1}{M} \iiint_V \rho z \odif{V}
+\end{align*}
+\subsection{Center of Gravity}
+The resultant weight of the particles in a body pass through a single point called the center of gravity.
+
+For a length:
+\begin{equation*}
+    \overline{x} = \frac{1}{W} \int_L \rho g x \odif{L}
+\end{equation*}
+For an area:
+\begin{align*}
+    \overline{x} & = \frac{1}{W} \iint_A \rho g x \odif{A} &  & \overline{y} = \frac{1}{W} \iint_A \rho g y \odif{A}
+\end{align*}
+For a volume:
+\begin{align*}
+    \overline{x} & = \frac{1}{W} \iiint_V \rho g x \odif{V} &  & \overline{y} = \frac{1}{W} \iiint_V \rho g y \odif{V} &  & \overline{z} = \frac{1}{W} \iiint_V \rho g z \odif{V}
+\end{align*}
+\subsection{Uniform Gravitational Field}
+In a uniform gravitational field where \(g \in \R\) is a constant. The weight simplifies to
+\begin{equation*}
+    W = Mg
+\end{equation*}
+and the center of mass and center gravity are equal.
+\subsection{Geometric Measures}
+The measure of a body represents its length in 1d, area in 2d, and volume in 3d.
+
+For a length:
+\begin{equation*}
+    L = \int_L \odif{L}
+\end{equation*}
+For an area:
+\begin{equation*}
+    A = \iint_A \odif{A}
+\end{equation*}
+For a volume:
+\begin{equation*}
+    V = \iiint_V \odif{V}
+\end{equation*}
+\subsection{Centroids}
+The geometric center of a body is known as its centroid.
+
+For a length:
+\begin{equation*}
+    \overline{x} = \frac{1}{L} \int_L \symbf{r} \odif{L}
+\end{equation*}
+For an area:
+\begin{align*}
+    \overline{x} & = \frac{1}{A} \iint_A x \odif{A} &  & \overline{y} = \frac{1}{A} \iint_A y \odif{A}
+\end{align*}
+For a volume:
+\begin{align*}
+    \overline{x} & = \frac{1}{V} \iiint_V x \odif{V} &  & \overline{y} = \frac{1}{V} \iiint_V y \odif{V} &  & \overline{z} = \frac{1}{V} \iiint_V z \odif{V}
+\end{align*}
+\subsection{Composite Bodies}
+A composite body consists of \(n\) connected ``simpler'' shaped bodies.
+To determine the center of gravity of such a body, we can use the sum of individual
+components:
+\begin{align*}
+    \overline{x} & = \frac{\sum_{i = 1}^n x A_i}{\sum_{i = 1}^n A_i} &  & \overline{y} = \frac{\sum_{i = 1}^n y A_i}{\sum_{i = 1}^n A_i}
+\end{align*}
+where \(A_i\) is the area of each shape.
+\subsection{Distributed Loads}
+A distributed load on a 1d rod of length \(L\) can be represented as a point load \(\symbf{F}_R\) applied at the position \(0 \leq \overline{x} \leq L\) on the rod.
+\begin{equation*}
+    \symbf{F}_R = \int_0^L w\left( x \right) \odif{x}
+\end{equation*}
+\subsection{Moment of Inertia}
+The moment of inertia describes the resistance of a moment when a force is applied perpendicular to the axis
+of rotation.
+
+The moment of inertia about the \(x\) and \(y\) axes are given by
+\begin{align*}
+    I_x & = \iint_A y^2 \odif{A} \\
+    I_y & = \iint_A x^2 \odif{A}
+\end{align*}
+and the polar moment of inertia is given by
+\begin{equation*}
+    J_O = I_x + I_y.
+\end{equation*}
+\begin{theorem}[Parallel axis theorem]
+    If the moment of inertia is known about an axis passing through the centroid of a region,
+    then the parallel-axis theorem can be used to find the moment of inertia about any axis
+    that is parallel to the centroidal axis.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height = 6cm, keepaspectratio = true]{figures/parallel_axis_theorem.pdf}
+        \caption{Region with known moment of inertia about its centroidal axis.} % \label{}
+    \end{figure}
+    In the figure above, if \(I_{x'}\) represents the moment of inertia about the centroidal axis \(x'\),
+    then the moment of inertia about the \(x\)-axis is given by
+    \begin{align*}
+        I_x & = \iint_R \left( y' + d_y \right)^2 \odif{A}                               \\
+            & = \iint_R y'^2 \odif{A} + 2 d_y \iint y' \odif{A} + d_y^2 \iint_R \odif{A} \\
+            & = \iint_R y'^2 \odif{A} + A d_y^2                                          \\
+            & = I_{x'} + A d_y^2
+    \end{align*}
+    Similarly for \(I_{y'}\), we have
+    \begin{equation*}
+        I_y = I_{y'} + A d_x^2
+    \end{equation*}
+    so that the polar moment of inertia is given by
+    \begin{equation*}
+        J_O = J_C + Ad^2
+    \end{equation*}
+    where \(J_C = I_{x'} + I_{y'}\) and \(d^2 = d_x^2 + d_y^2\).
+\end{theorem}
 \end{document}
