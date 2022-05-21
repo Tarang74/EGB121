@@ -961,4 +961,94 @@ and the polar moment of inertia is given by
     \end{equation*}
     where \(J_C = I_{x'} + I_{y'}\) and \(d^2 = d_x^2 + d_y^2\).
 \end{theorem}
+\section{Axial Load}
+This section covers the methods used to determine the deformation of an axially loaded member. 
+\subsection{Saint-Venant's Principle}
+The difference between the effects of two different but statically
+equivalent loads becomes very small at sufficiently large distances from the load.
+\subsection{Axial Deformation}
+Using Hooke's Law, we can show that the axial displacement of a member is given by
+\begin{equation*}
+    \delta = \frac{P L}{A E}
+\end{equation*}
+If the member varies in cross-sectional area, elasticity, or load, then we can use the following derivation instead:
+\begin{align*}
+    \sigma\left( x \right) & = E\left( x \right) \epsilon\left( x \right) \\
+    \frac{P\left( x \right)}{A\left( x \right)} & = E\left( x \right) \odv{\delta}{x} \\
+    \delta & = \int_0^L \frac{P L}{A E} \odif{x}
+\end{align*}
+similarly for \(n\) piecewise members,
+\begin{equation*}
+    \delta = \sum_{i = 1}^n \frac{P_i L_i}{A_i E_i}
+\end{equation*}
+where we can use the method of sections and determine displacements 
+between changes in internal force, cross-sectional area, or elasticity.
+\subsection{Principle of Superposition}
+The principle of superposition is used to determine the stress or displacement
+at a point in a member which is subjected to complicated loading.
+By subdiving the loading into components, the resultant stress or displacement at a point 
+can be determined by algebraically summing the stress of displacement caused by each 
+load component applied separately to the member.
+
+The following two conditions must be satisfied:
+\begin{enumerate}
+    \item The loading must be linearly related to the stress or displacement. 
+    For example, \(\sigma = P/A\) or \(\delta = PL/\left( AE \right)\), 
+    but not \(\sigma = P^2/A\) or \(\delta = \sin{\left( P \right)}L/\left( AE \right)\).
+    \item The loading must not significantly change the original geometry or 
+    configuration of the member. This is because the moment
+    caused by each load will not equal the resultant moment.
+\end{enumerate}
+\subsection{Statically Indeterminate Axially Loaded Members}
+If a system is statically indeterminate, we can establish an additional \textbf{kinematic condition} that considers
+the displacement of a particular point on the bar. For example, if both ends of the bar are fixed, then the following
+equation may be used:
+\begin{equation*}
+    \delta_{AB} = 0.
+\end{equation*}
+\section{Shear Force \& Bending Moment Diagrams}
+Members that are slender and support loadings that are applied perpendicular to their longitudinal axis are called
+beams. Beams can be supported in a number of ways, the most common are:
+\begin{itemize}
+    \item Simply supported (pin and roller)
+    \item Cantilever (fixed and hanging)
+    \item Overhanging (pin and roller with roller side hanging)
+\end{itemize}
+The shear force and bending moment along the length of a beam can be described as functions of distance \(x\) along the beam.
+We can use these functions to develop shear force and bending moment diagrams.
+\subsection{Beam Positive Sign Convention}
+When applying the method of sections along a beam, we start from the left side and move toward the right side of the beam.
+The following sign conventions apply:
+\begin{itemize}
+    \item Positive loads point upwards
+    \item Positive shear forces point downwards (reverse if starting from the right)
+    \item Positive moments rotate anticlockwise (reverse if starting from the right)
+\end{itemize}
+This is illustrated on the following diagram.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 4cm, keepaspectratio = true]{figures/sfd_bmd.pdf}
+    \caption{Positive sign convention on a section of a beam.} % \label{}
+\end{figure}
+\subsection{Determining the Shear Force and Bending Moment}
+In each section, the length of the beam is treated as a variable \(x\),
+allowing us to determine \(V\) and \(M\) for the \(i\)th section 
+on the interval \(s_i < x \leq s_{i + 1}\).
+By constructing the piecewise function comprising of the entire length of the beam, we can 
+determine the shear force and bending moment diagrams.
+\subsection{Determining the Shear Force and Bending Moment Analytically}
+If we consider the following segment \(\Delta{x}\) on a beam of length \(L\):
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 8cm, keepaspectratio = true]{figures/sfd_bmd_analytic.pdf}
+    \caption{Small section of a beam.} % \label{}
+\end{figure}
+then by the equilibrium of forces in the vertical direction:
+\begin{equation*}
+    V\left( x \right) = \int w\left( x \right) \odif{x}
+\end{equation*}
+similarly the equilibrium of moments about \(O\) give:
+\begin{equation*}
+    M\left( x \right) = \int V\left( x \right) \odif{x}
+\end{equation*}
 \end{document}
