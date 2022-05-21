@@ -25,6 +25,7 @@ This repository provides **lecture notes** for **EGB121 - Engineering Mechanics*
 3. Shear Stress-Strain Diagram
 4. Forces
 5. Structural Analysis
+6. Centroids
 
 ---
 
