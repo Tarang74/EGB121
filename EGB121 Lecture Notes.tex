@@ -962,7 +962,7 @@ and the polar moment of inertia is given by
     where \(J_C = I_{x'} + I_{y'}\) and \(d^2 = d_x^2 + d_y^2\).
 \end{theorem}
 \section{Axial Load}
-This section covers the methods used to determine the deformation of an axially loaded member. 
+This section covers the methods used to determine the deformation of an axially loaded member.
 \subsection{Saint-Venant's Principle}
 The difference between the effects of two different but statically
 equivalent loads becomes very small at sufficiently large distances from the load.
@@ -973,31 +973,31 @@ Using Hooke's Law, we can show that the axial displacement of a member is given 
 \end{equation*}
 If the member varies in cross-sectional area, elasticity, or load, then we can use the following derivation instead:
 \begin{align*}
-    \sigma\left( x \right) & = E\left( x \right) \epsilon\left( x \right) \\
-    \frac{P\left( x \right)}{A\left( x \right)} & = E\left( x \right) \odv{\delta}{x} \\
-    \delta & = \int_0^L \frac{P L}{A E} \odif{x}
+    \sigma\left( x \right)                      & = E\left( x \right) \epsilon\left( x \right) \\
+    \frac{P\left( x \right)}{A\left( x \right)} & = E\left( x \right) \odv{\delta}{x}          \\
+    \delta                                      & = \int_0^L \frac{P L}{A E} \odif{x}
 \end{align*}
 similarly for \(n\) piecewise members,
 \begin{equation*}
     \delta = \sum_{i = 1}^n \frac{P_i L_i}{A_i E_i}
 \end{equation*}
-where we can use the method of sections and determine displacements 
+where we can use the method of sections and determine displacements
 between changes in internal force, cross-sectional area, or elasticity.
 \subsection{Principle of Superposition}
 The principle of superposition is used to determine the stress or displacement
 at a point in a member which is subjected to complicated loading.
-By subdiving the loading into components, the resultant stress or displacement at a point 
-can be determined by algebraically summing the stress of displacement caused by each 
+By subdiving the loading into components, the resultant stress or displacement at a point
+can be determined by algebraically summing the stress of displacement caused by each
 load component applied separately to the member.
 
 The following two conditions must be satisfied:
 \begin{enumerate}
-    \item The loading must be linearly related to the stress or displacement. 
-    For example, \(\sigma = P/A\) or \(\delta = PL/\left( AE \right)\), 
-    but not \(\sigma = P^2/A\) or \(\delta = \sin{\left( P \right)}L/\left( AE \right)\).
-    \item The loading must not significantly change the original geometry or 
-    configuration of the member. This is because the moment
-    caused by each load will not equal the resultant moment.
+    \item The loading must be linearly related to the stress or displacement.
+          For example, \(\sigma = P/A\) or \(\delta = PL/\left( AE \right)\),
+          but not \(\sigma = P^2/A\) or \(\delta = \sin{\left( P \right)}L/\left( AE \right)\).
+    \item The loading must not significantly change the original geometry or
+          configuration of the member. This is because the moment
+          caused by each load will not equal the resultant moment.
 \end{enumerate}
 \subsection{Statically Indeterminate Axially Loaded Members}
 If a system is statically indeterminate, we can establish an additional \textbf{kinematic condition} that considers
@@ -1032,9 +1032,9 @@ This is illustrated on the following diagram.
 \end{figure}
 \subsection{Determining the Shear Force and Bending Moment}
 In each section, the length of the beam is treated as a variable \(x\),
-allowing us to determine \(V\) and \(M\) for the \(i\)th section 
+allowing us to determine \(V\) and \(M\) for the \(i\)th section
 on the interval \(s_i < x \leq s_{i + 1}\).
-By constructing the piecewise function comprising of the entire length of the beam, we can 
+By constructing the piecewise function comprising of the entire length of the beam, we can
 determine the shear force and bending moment diagrams.
 \subsection{Determining the Shear Force and Bending Moment Analytically}
 If we consider the following segment \(\Delta{x}\) on a beam of length \(L\):
@@ -1050,5 +1050,104 @@ then by the equilibrium of forces in the vertical direction:
 similarly the equilibrium of moments about \(O\) give:
 \begin{equation*}
     M\left( x \right) = \int V\left( x \right) \odif{x}
+\end{equation*}
+\subsection{Point Loads}
+The result of a point load \(\symbf{F}\) on a beam is a step on the shear force diagram in the direction of \(\symbf{F}\),
+\subsection{Point Moments}
+The result of a clockwise moment \(\symbf{M}_O\) applied at a point O on a beam is a step on the bending
+moment diagram, where clockwise moments are positive.
+\subsection{Bending Deformation}
+Consider the following beam under bending
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 7cm, keepaspectratio = true]{figures/bending_deformation_diagram.pdf}
+    \caption{Beam under bending deformation.} % \label{}
+\end{figure}
+with the following section
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[c]{0.47\linewidth}
+        \centering
+        \includegraphics[height = 3cm, keepaspectratio = true]{figures/beam_section_before_bending.pdf}
+        \caption{Before deformation.}
+    \end{subfigure}
+    \begin{subfigure}[c]{0.47\linewidth}
+        \centering
+        \includegraphics[height = 6cm, keepaspectratio = true]{figures/beam_section_after_bending.pdf}
+        \caption{After deformation.}
+    \end{subfigure}
+    \caption{Beam section.} % \label{}
+\end{figure}
+where \(\rho\) is the radius of curvature of the beam and \(\Delta{x}\), located on the neutral surface, does not change in length
+whereas \(\Delta{s}\) located at an arbitrary distance \(y\) above the neutral axis, contracts to \(\Delta{s}'\) through deformation.
+
+By definition, the normal strain along \(\Delta{s}\) is given by
+\begin{equation*}
+    \epsilon = \lim_{\Delta{s} \to 0} \frac{\Delta{s}' - \Delta{s}}{\Delta{s}}
+\end{equation*}
+Before deformation, we have
+\begin{equation*}
+    \Delta{x} = \Delta{s} = \rho \Delta{\theta}
+\end{equation*}
+through trigonometry, we can also show that for small angles
+\begin{equation*}
+    \Delta{s}' = \left( \rho - y \right) \sin{\left( \Delta{\theta} \right)} \approx \left( \rho - y \right) \Delta{\theta}
+\end{equation*}
+therefore the above equation becomes
+\begin{align*}
+    \epsilon & = \lim_{\Delta{\theta} \to 0} \frac{\left( \rho - y \right) \Delta{\theta} - \rho \Delta{\theta}}{\rho \Delta{\theta}} \\
+             & = - \frac{y}{\rho}.
+\end{align*}
+As \(\frac{1}{\rho}\) is constant at \(x\), the longitudinal normal strain will vary linearly with \(y\) measured from the neutral axis.
+Therefore at distance \(y = c\) from the neutral axis the strain will be maximised.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 5cm, keepaspectratio = true]{figures/beam_strain.pdf}
+    \caption{Linear strain in beam.} % \label{}
+\end{figure}
+Here
+\begin{equation*}
+    \epsilon_{\text{max}} = \frac{c}{\rho}
+\end{equation*}
+so that
+\begin{align*}
+    \frac{\epsilon}{\epsilon_{\text{max}}} & = \frac{-y/\rho}{c/\rho} \\
+                                           & = -\frac{y}{c}.
+\end{align*}
+Given elastic deformation, we also have
+\begin{equation*}
+    \sigma = -\frac{y}{c}\sigma_{\text{max}}
+\end{equation*}
+\subsection{Flexure Formula}
+\subsubsection{Location of the Neutral Axis}
+To locate the neutral axis in Figure (x), we require the resultant force produced by the stress distribution
+acting over the cross-sectional area to be equal to zero.
+\begin{align*}
+    \symbf{F}_R & = \sum F_x                                           \\
+    0           & = \iint_A \odif{F}                                   \\
+                & = \iint_A \sigma \odif{A}                            \\
+                & = \iint_A -\frac{y}{c} \sigma_{\text{max}} \odif{A}  \\
+                & = - \frac{\sigma_{\text{max}}}{c} \iint_A y \odif{A}
+\end{align*}
+as \(\frac{\sigma_{\text{max}}}{c} \neq 0\), \(\iint_A y \odif{A} = 0\).
+\subsubsection{Bending Moment}
+We can determine the stress in the beam if we
+require the moment \(M\) to be equal to the moment produced by the stress
+distribution about the neutral axis.
+\begin{align*}
+    \left( M_R \right)_z & = \sum M_z                                             \\
+    M                    & = \iint_A y \odif{F}                                   \\
+                         & = \iint_A y \sigma \odif{A}                            \\
+                         & = \iint_A y \frac{y}{c} \sigma_{\text{max}} \odif{A}  \\
+                         & = \frac{\sigma_{\text{max}}}{c} \iint_A y^2 \odif{A} \\
+                         & = \frac{\sigma_{\text{max}}}{c} I_x 
+\end{align*}
+therefore, 
+\begin{equation*}
+    \sigma_{\text{max}} = -\frac{M c}{I_x}
+\end{equation*}
+and the normal stress at any distance \(y\) is given by
+\begin{equation*}
+    \sigma = \frac{M y}{I_x}
 \end{equation*}
 \end{document}
