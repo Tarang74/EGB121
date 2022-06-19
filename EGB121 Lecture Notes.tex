@@ -1,4 +1,5 @@
-%!TEX program = xelatex
+%!TEX TS-program = xelatex
+%!TEX options = -aux-directory=Debug -shell-escape -file-line-error -interaction=nonstopmode -halt-on-error -synctex=1 "%DOC%"
 \documentclass{article}
 \input{LaTeX-Submodule/template.tex}
 
@@ -913,14 +914,25 @@ A composite body consists of \(n\) connected ``simpler'' shaped bodies.
 To determine the center of gravity of such a body, we can use the sum of individual
 components:
 \begin{align*}
-    \overline{x} & = \frac{\sum_{i = 1}^n x A_i}{\sum_{i = 1}^n A_i} &  & \overline{y} = \frac{\sum_{i = 1}^n y A_i}{\sum_{i = 1}^n A_i}
+    \overline{x} & = \frac{\sum_{i = 1}^n \overline{x}_i A_i}{\sum_{i = 1}^n A_i} &  & \overline{y} = \frac{\sum_{i = 1}^n \overline{y}_i A_i}{\sum_{i = 1}^n A_i}
 \end{align*}
-where \(A_i\) is the area of each shape.
+where \(A_i\) is the area of each shape, and \(\overline{x}_i\) and \(\overline{y}_i\) are the centroids of each shape.
 \subsection{Distributed Loads}
 A distributed load on a 1d rod of length \(L\) can be represented as a point load \(\symbf{F}_R\) applied at the position \(0 \leq \overline{x} \leq L\) on the rod.
 \begin{equation*}
     \symbf{F}_R = \int_0^L w\left( x \right) \odif{x}
 \end{equation*}
+\begin{equation*}
+    \overline{x} = \frac{1}{\symbf{F}_R} \int_0^L w\left( x \right) x \odif{x}
+\end{equation*}
+here each section can be represented as
+\begin{equation*}
+    \symbf{F}_R = \int_a^b w\left( x \right) \odif{x}
+\end{equation*}
+\begin{equation*}
+    \overline{x} = \frac{1}{\symbf{F}_R} \int_a^b w\left( x \right) x \odif{x}
+\end{equation*}
+over the interval \(a < x < b\).
 \subsection{Moment of Inertia}
 The moment of inertia describes the resistance of a moment when a force is applied perpendicular to the axis
 of rotation.
@@ -1135,19 +1147,190 @@ We can determine the stress in the beam if we
 require the moment \(M\) to be equal to the moment produced by the stress
 distribution about the neutral axis.
 \begin{align*}
-    \left( M_R \right)_z & = \sum M_z                                             \\
-    M                    & = \iint_A y \odif{F}                                   \\
-                         & = \iint_A y \sigma \odif{A}                            \\
-                         & = \iint_A y \frac{y}{c} \sigma_{\text{max}} \odif{A}  \\
+    \left( M_R \right)_z & = \sum M_z                                           \\
+    M                    & = \iint_A y \odif{F}                                 \\
+                         & = \iint_A y \sigma \odif{A}                          \\
+                         & = \iint_A y \frac{y}{c} \sigma_{\text{max}} \odif{A} \\
                          & = \frac{\sigma_{\text{max}}}{c} \iint_A y^2 \odif{A} \\
-                         & = \frac{\sigma_{\text{max}}}{c} I_x 
+                         & = \frac{\sigma_{\text{max}}}{c} I
 \end{align*}
-therefore, 
+therefore,
 \begin{equation*}
-    \sigma_{\text{max}} = \frac{M c}{I_x}
+    \sigma_{\text{max}} = \frac{M c}{I}
 \end{equation*}
 and the normal stress at any distance \(y\) is given by
 \begin{equation*}
-    \sigma = -\frac{M y}{I_x}
+    \sigma = -\frac{M y}{I}
 \end{equation*}
+\subsection{Beam Deflection}
+Applying Hooke'a Law, we obtain the following equation that relates the radius of curvature
+with the properties of the beam
+\begin{align*}
+    \sigma         & = E \epsilon                       \\
+    -\frac{M y}{I} & = E \left( -\frac{y}{\rho} \right) \\
+    \frac{1}{\rho} & = \frac{M}{E I}
+\end{align*}
+Using Calculus, we can show that the radius of curvature of a curve \(\nu\left( x \right)\) is given by
+\begin{equation*}
+    \frac{1}{\rho} = \frac{\odv[order=2]{\nu}{x}}{\left( 1 + \left( \odv{\nu}{x} \right)^2 \right)^{\frac{3}{2}}}
+\end{equation*}
+but for small deformations we suppose \(\odv{\nu}{x} = 0\), so that
+\begin{equation*}
+    \frac{1}{\rho} = \odv[order=2]{\nu}{x}.
+\end{equation*}
+Substituting this into the equation above gives
+\begin{equation*}
+    \odv[order=2]{\nu}{x} = \frac{M}{E I}.
+\end{equation*}
+This yields
+\begin{align*}
+    M\left( x \right) & = EI \odv[order=2]{\nu}{x} \\
+    V\left( x \right) & = EI \odv[order=3]{\nu}{x} \\
+    w\left( x \right) & = EI \odv[order=4]{\nu}{x}
+\end{align*}
+Finally, the slope \(\theta\) (in radians) of this deflection is simply the rate of change
+\begin{equation*}
+    \theta\left( x \right) = \odv{\nu}{x}
+\end{equation*}
+\subsection{Statically Indeterminate Beams}
+Beams where reaction forces cannot be solved using force and moment resolution are statically indeterminate.
+Here we must use the slope and deflection functions, in combination with certain beam conditions, to solve for reaction
+forces.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c c}
+        \toprule
+        \textbf{Name} & \textbf{Symbol}                                             & \textbf{Condition} \\
+        \midrule
+        Roller        & \begin{tikzpicture}[baseline=(current bounding box.center)]
+                            \point{a}{0}{0};
+                            \support{2oo}{a};
+                        \end{tikzpicture}
+                      & \(\nu = 0\)                                                                      \\[0.8cm]
+        Pin           & \begin{tikzpicture}[baseline=(current bounding box.center)]
+                            \point{a}{0}{0};
+                            \support{1}{a};
+                        \end{tikzpicture}
+                      & \(\nu = 0\)                                                                      \\[0.8cm]
+        Fixed         & \begin{tikzpicture}[baseline=(current bounding box.center)]
+                            \point{a}{0}{0};
+                            \point{b}{1.1}{0};
+                            \support{3}{a}[-90];
+                            \beam{2}{a}{b}[0][0];
+                        \end{tikzpicture}
+                      & \(\nu = 0\) and \(\theta = 0\)                                                   \\
+        \bottomrule
+    \end{tabular}
+    % \caption{} % \label{}
+\end{table}
+\subsection{Principle of Superposition}
+Similar to axial loading, we can utilise the principle of superposition on complex beams.
+\section{Torsion}
+\begin{definition}[Torque]
+    Torque is a moment that tends to twist a member about its longitudinal axis.
+\end{definition}
+Torsion induces shear strain \(\gamma\) and shear stress \(\tau\).
+\subsection{Torsional Deformation}
+Given a shaft that is fixed at one end with a torque at its other end.
+Provided the angle of twist is small, the length and radius will remain practically
+unchanged.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.47\linewidth}
+        \centering
+        \includegraphics[height = 4cm, keepaspectratio = true]{figures/shaft_before_torsion.pdf}
+        \caption{Before deformation.} % \label{}
+    \end{subfigure}
+    \begin{subfigure}{0.47\linewidth}
+        \centering
+        \includegraphics[height = 4cm, keepaspectratio = true]{figures/shaft_after_torsion.pdf}
+        \caption{After deformation.} % \label{}
+    \end{subfigure}
+\end{figure}
+Due to the deformation, the front and read faces will undergo rotation and the difference in these rotations
+\(\odif{\phi}\), causes the element to be subjected to a shear strain, \(\gamma\).
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 5cm, keepaspectratio = true]{figures/shaft_cross_section.pdf}
+    \caption{Cross section of a shaft.} % \label{}
+\end{figure}
+Consider a small section along the longitudinal axis of the shaft. The angle \(\odif{\phi}\)
+can be related to the width of the section as follows
+\begin{align*}
+    \rho \odif{\phi} & = \gamma \odif{x}     \\
+    \gamma           & = \rho \odv{\phi}{x}.
+\end{align*}
+As \(\odv{\phi}{x}\) is constant over the cross section, we can rewrite the slope as \(\gamma_{\text{max}} / c\).
+\begin{equation*}
+    \gamma = \frac{\rho}{c} \gamma_{\text{max}}
+\end{equation*}
+so that the shear strain within the shaft varies linearly along any radial line.
+\subsection{Torsion Formula}
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 5cm, keepaspectratio = true]{figures/shaft_shear_stress.pdf}
+    \caption{Shear stress on a shaft.} % \label{}
+\end{figure}
+Using Hooke's law for shear stress and strain, we also have the following equation for
+shear strain acting on a corss section of the shaft
+\begin{equation*}
+    \tau = \frac{\rho}{c} \tau_{\text{max}}.
+\end{equation*}
+As each element of area \(\odif{A}\) is subjected to a force \(\odif{F} = \tau \odif{A}\), the
+torque produced by this force is given by
+\begin{align*}
+    \odif{T} & = \rho \odif{F}                                          \\
+    \odif{T} & = \rho \tau \odif{A}                                     \\
+    T        & = \iint_A \rho \tau \odif{A}                             \\
+    T        & = \iint_A \rho \frac{\rho}{c} \tau_{\text{max}} \odif{A} \\
+    T        & = \frac{\tau_{\text{max}}}{c} \iint_A \rho^2 \odif{A}    \\
+    T        & = \frac{\tau_{\text{max}}}{c} J
+\end{align*}
+so that the maximum shear stress in the shaft is given by
+\begin{equation*}
+    \tau_{\text{max}} = \frac{Tc}{J}.
+\end{equation*}
+Similarly, the shear stress at any distance \(\rho\) is expressed as
+\begin{equation*}
+    \tau = \frac{T\rho}{J}.
+\end{equation*}
+Either of these equations are known as the torsion formula.
+\subsection{Power Transmission}
+Shafts with circular cross sections are often used to transmit power developed by a machine.
+They are subjected to a torque that depends both on the power generated by the machine and the angular speed
+of the shaft. This is expressed mathematically as
+\begin{equation*}
+    P = T \omega = 2 \pi f T.
+\end{equation*}
+\subsection{Angle of Twist}
+The angle of twist \(\phi\) of one end of a shaft with respect to its other end is determined through a similar formulation.
+By rearranging Hooke's law, and substituting the torsion formula we have,
+\begin{align*}
+    \tau            & = G \gamma         \\
+    \frac{T\rho}{J} & = G \gamma         \\
+    \gamma          & = \frac{T\rho}{GJ}
+\end{align*}
+so that
+\begin{align*}
+    \odif{\phi} & = \frac{T}{GJ} \odif{x}          \\
+    \phi        & = \int_0^L \frac{T}{GJ} \odif{x}.
+\end{align*}
+If \(T\), \(G\), and \(J\) are constant, then
+\begin{equation*}
+    \phi = \frac{TL}{GJ}.
+\end{equation*}
+If a shaft has multiple torques, or the cross-sectional area or shear modulus changes 
+abrubtly from one section of the shaft to the next, we can find the angle of twist from
+the algebraic sum of the angles of twist of each section.
+\begin{equation*}
+    \phi = \sum \frac{TL}{GJ}.
+\end{equation*}
+\subsection{Sign Convention}
+To apply this equation, use the right-hand rule where the thumb is directed outward from the shaft 
+and the fingers indicate the direction of the torque.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height = 3cm, keepaspectratio = true]{figures/shaft_sign_convention.pdf}
+    \caption{Positive sign convention for \(T\) and \(\phi\).} % \label{}
+\end{figure}
 \end{document}
