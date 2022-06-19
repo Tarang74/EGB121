@@ -8,7 +8,7 @@
 
 ## Downloads
 
-Lecture notes download: [EGB121 Lecture Notes PDF](EGB121%20Lecture%20Notes.pdf)
+Lecture notes download: [EGB121 Lecture Notes PDF](https://www.github.com/Tarang74/EGB121/raw/main/EGB121%20Lecture%20Notes.pdf)
 
 ---
 
@@ -28,6 +28,7 @@ This repository provides **lecture notes** for **EGB121 - Engineering Mechanics*
 6. Centroids
 7. Axial Load
 8. Shear Force \& Bending Moment Diagrams
+9. Torsion
 
 ---
 
